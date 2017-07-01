@@ -1,0 +1,15 @@
+public class Solution {
+    public int maximumProduct(int[] nums) {
+        int resultantProduct=0;
+        nums.sort();
+        if (nums[0]<0 && nums[1]<0 && nums[-1]!=0)
+        {
+            resultantProduct= nums[0] * nums[1] * nums[-1];
+        }else
+        {
+            resultantProduct= nums[-2] * nums[-3] * nums[-1];
+        }
+        return resutantProduct;
+        
+    }
+}
