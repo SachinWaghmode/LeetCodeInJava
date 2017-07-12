@@ -13,3 +13,29 @@ Input:
 Output:
 [5,6]
 */
+
+public class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        
+        ArrayList <Integer> result = new ArrayList<>();
+        
+        for(int i=0; i< nums.length; i++)
+        {
+            int index = Math.abs(nums[i])-1;
+            //use absolute to calculate index even if element is marked as negative
+            if(nums[index]>0)
+            {
+                nums[index] = -nums[index];
+                //mark the index with negative value
+            }
+        }
+        
+        for(int i=0; i<nums.length; i++)
+        {
+            if (nums[i]>0)
+                result.add(i+1);
+        }
+    
+        return result;
+    }
+}
