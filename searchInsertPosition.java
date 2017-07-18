@@ -9,3 +9,14 @@ Here are few examples.
 [1,3,5,6], 7 → 4
 [1,3,5,6], 0 → 0
 */
+
+public class Solution {
+    public int searchInsert(int[] nums, int target) {
+        for( int i=0; i<nums.length; i++)
+        {
+            if (target <= nums[i])
+                return i;
+        }
+        return nums.length;
+    }
+}
