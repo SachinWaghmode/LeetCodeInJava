@@ -17,18 +17,25 @@ The integers in the given array are in the range of [0, 1000].
 
 public class Solution {
     public int triangleNumber(int[] nums) {
-        int count=0,j=0;
+        int count=0;
         if (nums.length <=2)
             return 0;
         Arrays.sort(nums);
-        for(int i=2; i<nums.length; i++)
+        for(int i=nums.length-1; i>=2; i--)
         {
-            if (nums[i] < (nums[i-1] + nums[i-2]))
+            int side1=0, side2= i-1; 
+            while(side1 < side2)
+            {
+                if (nums[i] < (nums[side1] + nums[side2]))
                 {
-                    count+= nums.length-i;
-                    
+                    count+= side2-side1;
+                    side2--;
                 }
-            
+                else
+                {
+                    side1++;
+                }
+            }   
         }
         return count;
     }
