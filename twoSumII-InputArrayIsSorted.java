@@ -8,3 +8,55 @@ You may assume that each input would have exactly one solution and you may not u
 Input: numbers={2, 7, 11, 15}, target=9
 Output: index1=1, index2=2
 */
+
+
+public class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        int[] resultantIndex = new int[2];
+        int j=0,i=0;
+        int n= numbers.length-1;
+        while(i<n)
+            {
+                if(target - numbers[i] == numbers[n] )
+                {
+                    resultantIndex[j] = i+1;
+                    resultantIndex[j+1] = n+1;
+                    break;
+                 }
+                else if(target - numbers[i] < numbers[n] )
+                {
+                    n--;
+                }
+                else
+                {
+                    i++;
+                }
+            }
+         return resultantIndex;
+        
+    }
+}
+
+
+/* Recommended Solution
+
+public int[] twoSum(int[] num, int target) {
+    int[] indice = new int[2];
+    if (num == null || num.length < 2) return indice;
+    int left = 0, right = num.length - 1;
+    while (left < right) {
+        int v = num[left] + num[right];
+        if (v == target) {
+            indice[0] = left + 1;
+            indice[1] = right + 1;
+            break;
+        } else if (v > target) {
+            right --;
+        } else {
+            left ++;
+        }
+    }
+    return indice;
+}
+
+*/
