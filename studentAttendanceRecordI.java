@@ -9,3 +9,36 @@ A student could be rewarded if his attendance record doesn't contain more than o
 You need to return whether the student could be rewarded according to his attendance record.
 
 */
+
+public class Solution {
+    public boolean checkRecord(String s) {
+        int countL=0, countA =0;
+        for(int i=0; i<s.length(); i++)
+        {
+            if (s.charAt(i)=='A')
+            {
+                countA++;
+                countL=0;
+            }
+            else if(s.charAt(i)=='L')
+            {
+                countL++; 
+            }
+            else
+                countL=0;
+                
+            if (countA > 1 || countL > 2)
+                return false;
+        }
+        return true;
+    }
+}
+
+/* Recommended Solution 
+
+public boolean checkRecord(String s) {
+    return !s.matches(".*LLL.*|.*A.*A.*");
+}
+
+*/
+
