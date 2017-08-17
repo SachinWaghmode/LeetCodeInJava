@@ -22,56 +22,35 @@ public class Solution {
     }
 }
 
-/* Iterative Solution was exceeding time limit
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
+/* Iterative Solution 
 public class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode head = null, temp = null;
-        
-        if( l1 == null )
-            return l2;
-        else if( l2 == null)
-            return l1;
-        
-       
-        if( l1.val <= l2.val )
-            head = l1;
-        else 
-            head = l2; 
-        
-        temp = head; 
-        
-        while(l1 != null && l2 !=null)
-        {
-            if( l1.val > l2.val)
-            {
-                temp.next = l2;
-                l2 = l2.next;
-            }
-            else if( l1.val <= l2.val)
-            {
-                temp.next = l1;
-                l1 = l1.next;
-            }
-            
-            temp = temp.next;
+    ListNode head = new ListNode(0);
+    ListNode r=head;
+ 
+    ListNode p1=l1;
+    ListNode p2=l2;
+    while(p1!=null && p2!=null){
+        if(p1.val < p2.val){
+            r.next = p1;
+            p1 = p1.next;
+        }else{
+            r.next = p2;
+            p2 = p2.next;
         }
-        
-        if( l1 == null && l2 != null)
-            temp.next = l2;
-        else if( l2 == null && l1 != null)
-            temp.next = l1;
-        
-        head = head.next;
-        return head;
-        
+        r=r.next;
     }
+ 
+    if(p1!=null){
+        r.next = p1;
+    }
+ 
+    if(p2!=null){
+        r.next = p2;
+    }
+    return head.next;
 }
+}
+
+
 */
