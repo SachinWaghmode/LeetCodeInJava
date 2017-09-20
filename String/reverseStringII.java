@@ -8,3 +8,28 @@ The string consists of lower English letters only.
 Length of the given string and k will in the range [1, 10000]
 
 */
+
+class Solution {
+    public String reverseStr(String s, int k) {
+        int n = s.length();
+        char[] result = s.toCharArray();
+        int i=0;
+        while(i<n){
+           int j = Math.min(i+k-1, n-1); // set j to last character in 2k chunk
+            reverse(result,i,j);         // keep i & j unchanged
+            i += 2*k;                    // increment i to next chunk 
+            
+        }
+        return String.valueOf(result);
+    }
+    
+    private void reverse(char[] result, int l, int r){
+        
+        while(l<r ){
+            char temp = result[l];      // swap chunk of k characters 
+            result[l++] = result[r];
+            result[r--] = temp;
+            
+        }
+    }
+}
